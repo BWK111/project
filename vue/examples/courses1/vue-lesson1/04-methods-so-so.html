@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/vue.js"></script>
+    <title>Lesson 1</title>
+</head>
+
+<!-- BAD PRACTICE -->
+
+<body>
+    <div class="wrapper">
+        <div class="sample">
+            FN: <input type="text" v-model.trim="firstName"><br>
+            LN: <input type="text" v-model.trim="lastName"><br>
+            <hr>
+            <h2>Hello, {{ fullName() }}</h2>
+            <hr>
+            <button class="btn btn-success" @click="showAlert = !showAlert">Toggle alert</button>
+            <div class="alert alert-danger m-3" v-show="showAlert">Lorem ipsum dolor sit amet consectetur adipisicing
+                elit.</div>
+        </div>
+    </div>
+
+    <script>
+        let app = Vue.createApp({
+            data() {
+                return {
+                    showAlert: false,
+                    firstName: '',
+                    lastName: ''
+                }
+            },
+            methods: {
+                fullName() {
+                    console.log('fullName()');
+                    return (this.firstName + ' ' + this.lastName).trim();
+                }
+            }
+        });
+
+
+        let root = app.mount('.sample');
+        console.log(root);
+    </script>
+</body>
+
+</html>

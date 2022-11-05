@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/vue.js"></script>
+    <title>Lesson 1</title>
+</head>
+
+<!-- BAD PRACTICE -->
+
+<body>
+    <div class="wrapper">
+        <div class="sample">
+            <button class="btn btn-primary" @click="add">Add number</button>
+            <hr>
+            <ul class="list-group">
+                <li v-for="number, index in numbers" class="list-group-item" @mouseenter="double(index)">
+                    #{{ index }} | {{ number }}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let app = Vue.createApp({
+            data() {
+                return {
+                    numbers: [1, 2, 3]
+                }
+            },
+            methods: {
+                add() {
+                    this.numbers.push(Math.random());
+                },
+                double(index) {
+                    this.numbers[index] *= 2;
+                }
+            }
+        });
+
+
+        let root = app.mount('.sample');
+        console.log(root);
+    </script>
+</body>
+
+</html>
